@@ -1,6 +1,11 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Posts from '../components/Posts.astro';
+import {getAllPosts} from '../data/blog-data';
+
+const data = await getAllPosts();
+const allPosts = data.publication.posts.edges;
+//console.log(allPosts)
 ---
 
 <html lang="en">
@@ -12,8 +17,14 @@ import Footer from '../components/Footer.astro';
 		<title>AstroNode Blog</title>
 	</head>
 	<body>
-		<Navigation />
-			<h1>AstroNode</h1>
-		<Footer />
+		<BaseLayout>
+			<div class="flex flex-col justify-center items-center p-2">
+				<h2>{`Welcome to ${data.publication.title}`}</h2>
+				<Posts allPosts={allPosts}/>
+				<div class="flex justify-center">
+					<button class="bg-gray-500 p-2 rounded-sm text-white cursor-pointer">Load More...</button>
+				</div>
+			</div>
+		</BaseLayout>
 	</body>
 </html>

@@ -1,0 +1,9 @@
+---
+const {allPosts} = Astro.props;
+import PostCard from './PostCard.astro';
+
+---
+
+<div>
+  {allPosts.map((post) => <PostCard post={post?.node} />)}
+</div>
