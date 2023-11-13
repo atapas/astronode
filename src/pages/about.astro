@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {getPage} from '../data/blog-data';
+import { Markdown } from '@astropub/md';
 
 const data = await getPage();
 console.log(data)
@@ -18,7 +19,7 @@ console.log(data)
       <div class="flex flex-col justify-center p-2">
         <h2 class="text-3xl mb-3">{data.title} Page</h2>
         <div class="about-content">
-          <p set:html={data.content.html} class="text-xl"></p>
+          <Markdown of={data?.content?.markdown} />
         </div>
       </div>
     </BaseLayout>

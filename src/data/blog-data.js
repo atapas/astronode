@@ -1,6 +1,5 @@
-
 import { gql } from "graphql-request";
-import {getClient} from '../lib/graphQLClient';
+import { getClient } from "../lib/graphQLClient";
 
 export const getAllPosts = async () => {
   const client = getClient();
@@ -13,13 +12,13 @@ export const getAllPosts = async () => {
           posts(first: 10) {
             edges {
               node {
+                author{
+                  name
+                  profilePicture
+                }
                 title
                 subtitle
                 slug
-                tags {
-                  name
-                  slug
-                }
                 coverImage {
                   url
                 }
@@ -33,8 +32,43 @@ export const getAllPosts = async () => {
   );
 
   return allPosts;
-}
+};
 
+export const getPost = async (slug) => {
+  const client = getClient();
+
+  const data = await client.request(
+    gql`
+      query postDetails($slug: String!) {
+        publication(host: "blog.greenroots.info") {
+          post(slug: $slug) {
+            author{
+              name
+              profilePicture
+            }
+            publishedAt
+            title
+            subtitle
+            readTimeInMinutes
+            content{
+              html
+            }
+            tags {
+              name
+              slug
+            }
+            coverImage {
+              url
+            }
+          }
+        }
+      }
+    `,
+    { slug: slug }
+  );
+      
+  return data.publication.post;
+};
 
 export const getPage = async () => {
   const client = getClient();
@@ -43,17 +77,17 @@ export const getPage = async () => {
     gql`
       query pageData {
         publication(host: "blog.greenroots.info") {
-          staticPage(slug: "about"){
+          staticPage(slug: "about") {
             title
-            content{
-              html
+            content {
+              markdown
             }
           }
-          title          
+          title
         }
       }
     `
   );
 
   return page.publication.staticPage;
-}
+};

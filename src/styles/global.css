@@ -15,6 +15,26 @@ body {
   box-sizing: border-box;
 }
 
+.post-details p{
+  color: rgb(17, 22, 20);
+  margin: 2px;
+}
+
+.post-details H2{
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.post-details pre{
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 2px;
+  background-color: rgb(246, 244, 244);
+}
+
+
 .about-content h1{
   color:#347cbb;
 }

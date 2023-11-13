@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.0.2
     version: 5.0.2(astro@3.4.4)(tailwindcss@3.3.5)
+  '@astropub/md':
+    specifier: ^0.3.0
+    version: 0.3.0(@astrojs/markdown-remark@3.3.0)
   astro:
     specifier: ^3.4.4
     version: 3.4.4
@@ -103,6 +106,14 @@ packages:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astropub/md@0.3.0(@astrojs/markdown-remark@3.3.0):
+    resolution: {integrity: sha512-cR4gT97/aI9GH26Hg4g5tZZl5MFeEH26RO54irjiTK7FEmILbGViHAXI+q+7VCghi1bEGsy5SpY3u1hRoAFNfQ==}
+    peerDependencies:
+      '@astrojs/markdown-remark': ^3
+    dependencies:
+      '@astrojs/markdown-remark': 3.3.0(astro@3.4.4)
     dev: false
 
   /@babel/code-frame@7.22.13:
