@@ -14,7 +14,7 @@ export const getAllPosts = async () => {
             edges {
               node {
                 title
-                brief
+                subtitle
                 slug
                 tags {
                   name
@@ -33,4 +33,27 @@ export const getAllPosts = async () => {
   );
 
   return allPosts;
+}
+
+
+export const getPage = async () => {
+  const client = getClient();
+
+  const page = await client.request(
+    gql`
+      query pageData {
+        publication(host: "blog.greenroots.info") {
+          staticPage(slug: "about"){
+            title
+            content{
+              html
+            }
+          }
+          title          
+        }
+      }
+    `
+  );
+
+  return page.publication.staticPage;
 }

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getAllPosts} from '../data/blog-data';
+
+
+export async function getStaticPaths() {
+  const data = await getAllPosts();
+  const allPosts = data.publication.posts.edges;
+  return allPosts.map((post) => {
+    return {params: { slug: post.node.slug }}
+  })
+}
+
+const { slug } = Astro.params;
+---
+<BaseLayout pageTitle={slug}>
+  <p>Posts with {slug}</p>
+</BaseLayout>

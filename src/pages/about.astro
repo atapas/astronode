@@ -1,76 +1,26 @@
 ---
-import Navigation from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getPage} from '../data/blog-data';
 
-const pageTitle = "About Me";
-const identity = {
-  firstName: "Tapas",
-  country: "India",
-  occupation: "Technical Writer",
-  hobbies: ["photography", "birdwatching", "baseball"],
-};
+const data = await getPage();
+console.log(data)
 
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
-const happy = true;
-const finished = false;
-const goal = 3;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
-    <title>{pageTitle}</title>
+    <title>AstroNode - About</title>
   </head>
   <body>
-    <Navigation />
-
-    <h1 class="font-bold text-3xl pt-2 pb-2">{pageTitle}</h1>
-    <h2 class="font-bold text-xl pt-2 pb-2">... and my new Astro site!</h2>
-
-    <p class="p-2">
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
-
-    <p class="p-2">
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-
-    <p class="p-2">Here are a few facts about me:</p>
-    <ul>
-      <li>My name is {identity.firstName}.</li>
-      <li>
-        I live in {identity.country} and I work as a {identity.occupation}.
-      </li>
-      {
-        identity.hobbies.length >= 2 && (
-          <li>
-            Two of my hobbies are: {identity.hobbies[0]} and{" "}
-            {identity.hobbies[1]}
-          </li>
-        )
-      }
-    </ul>
-    <p>My skills are:</p>
-    <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
-    </ul>
-
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {
-      goal === 3 ? (
-        <p>My goal is to finish in 1 day.</p>
-      ) : (
-        <p>My goal is not 3 days.</p>
-      )
-    }
-    <Footer />
+    <BaseLayout>
+      <div class="flex flex-col justify-center p-2">
+        <h2 class="text-3xl mb-3">{data.title} Page</h2>
+        <div class="about-content">
+          <p set:html={data.content.html} class="text-xl"></p>
+        </div>
+      </div>
+    </BaseLayout>
   </body>
 </html>
