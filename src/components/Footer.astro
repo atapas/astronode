@@ -2,8 +2,16 @@
 import Social from './Social.astro';
 ---
 
-<footer>
-  <Social platform="twitter" username="tapasadhikary" />
-  <Social platform="github" username="atapas" />
-  <Social platform="youtube" username="tapasadhikary" />
+<footer class=" mt-3 flex flex-col items-center justify-center bg-purple-200 p-1">
+  <div class="mt-1">
+    <p class="text-xl">
+      Made with ❤️ and passion using Headless Hashnode and Astro.
+    </p>
+  </div>
+  <div class="mt-3 flex">
+    <p class="text-md mt-1 mr-2">Reach out on</p>
+    <Social platform="X/Twitter" username="tapasadhikary" />
+    <Social platform="GitHub" username="atapas" />
+    <Social platform="Youtube" username="tapasadhikary" />
+  </div>
 </footer>

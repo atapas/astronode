@@ -3,9 +3,9 @@ const {post} = Astro.props;
 ---
 <a href={`/${post.slug}`}>
   <div class="p-6 bg-white rounded shadow-sm my-4">
-    <h2 class="text-xl pb-5 font-semibold">{post.title}</h2>
+    <h2 class="text-2xl pb-5 font-semibold">{post.title}</h2>
     <div class="flex">
-        <img class="rounded-lg shadow-lg w-1/2" src={post.coverImage?.url} alt={post.title} />
+        <img class="w-1/2 rounded-lg shadow-xl" src={post.coverImage?.url} alt={post.title} />
         <div class="flex flex-col m-4">
           <p class="mb-2">{post.subtitle}</p>
           <p>Published on {post.publishedAt}</p>
