@@ -1,0 +1,10 @@
+---
+const pageTitle = Astro.props.pageTitle
+---
+<header class="flex bg-purple-300 w-full p-3">
+  <h1 class="text-2xl">{pageTitle}</h1>
+  <div class="ml-5 pt-0.5 text-lg">
+    <a class="mr-3" href="/">Home</a>
+    <a href="/about/">About</a>
+  </div>
+</header>
