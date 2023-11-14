@@ -39,10 +39,10 @@ const { posts, matchedTag } = Astro.props;
 
 <BaseLayout>
   <div class="flex pt-3">
-    <p class="text-lg pt-1 mr-1">{posts.length} post(s) matched the tag</p> 
+    <p class="text-lg pt-1 px-1 mr-1">{posts.length} post(s) matched the tag</p> 
     <Tag tag={matchedTag} />
     <span class="mx-3 mt-1 block font-bold text-slate-500 text-xl"> | </span>
-    <a class="mt-1" href="/">See all posts</a>
+    <a class="mt-1.5" href="/">See all posts</a>
   </div>
   <Posts allPosts={posts} />
 </BaseLayout>
