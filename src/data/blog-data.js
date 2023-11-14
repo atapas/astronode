@@ -9,7 +9,11 @@ export const getAllPosts = async () => {
       query allPosts {
         publication(host: "blog.greenroots.info") {
           title
-          posts(first: 10) {
+          posts(first: 20) {
+            pageInfo{
+              hasNextPage
+              endCursor
+            }
             edges {
               node {
                 author{

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Posts from '../../components/Posts.astro';
 import {getAllPosts} from '../../data/blog-data';
+import Tag from '../../components/Tag.astro';
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -11,14 +12,37 @@ export async function getStaticPaths() {
   const jsonObject = allTags.map(JSON.stringify);
   const uniqueSet = new Set(jsonObject);
   const uniqueTags = Array.from(uniqueSet).map(JSON.parse);
-
-  return uniqueTags.map((tag: any) => {
-    return {params: { tag: tag.slug }}
-  })
+ 
+  return uniqueTags.map((uTag) => {
+    const filteredPosts = [];
+    allPosts.forEach((post) => {
+      const tags = post.node.tags;
+      tags.forEach((tag) => {
+          if(tag.slug === uTag.slug) {
+            filteredPosts.push(post)
+          }
+      })
+    })
+    
+    return {
+      params: { tag: uTag.slug },
+      props: { posts: filteredPosts, matchedTag: uTag },
+    };
+  });
 }
 
 const { tag } = Astro.params;
+const { posts, matchedTag } = Astro.props;
 
-
-
+// console.log(tag, posts);
 ---
+
+<BaseLayout>
+  <div class="flex pt-3">
+    <p class="text-lg pt-1 mr-1">{posts.length} post(s) matched the tag</p> 
+    <Tag tag={matchedTag} />
+    <span class="mx-3 mt-1 block font-bold text-slate-500 text-xl"> | </span>
+    <a class="mt-1" href="/">See all posts</a>
+  </div>
+  <Posts allPosts={posts} />
+</BaseLayout>
