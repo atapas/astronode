@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {getAllPosts, getPost} from '../data/blog-data';
+import Tag from '../components/Tag.astro';
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -13,11 +14,11 @@ const { slug } = Astro.params;
 const post = await getPost(slug);
 ---
 <BaseLayout pageTitle={slug}>
-  <article class="bg-white p-3 max-w-screen-lg">
+  <article class="bg-white p-3 mt-3 max-w-screen-lg">
     <img class="rounded-lg" src={post.coverImage?.url} alt={post.title} />
     <h1 class="text-4xl font-bold pt-5">{post?.title}</h1>
     <h2 class="text-xl pt-3 pb-3">{post.subtitle}</h2>
-    <div class="relative flex flex-row flex-wrap items-center justify-center px-4">
+    <div class="relative flex flex-row flex-wrap items-center justify-center">
       <div class="mb-5 flex w-full flex-row items-center justify-center md:mb-0 md:w-auto md:justify-start">
         <div>
           <span>{post.author.name}</span>
@@ -29,6 +30,10 @@ const post = await getPost(slug);
         <span>{post.readTimeInMinutes} min read</span>
       </div>
     </div>
+    <div class="flex flex-wrap justify-center items-center mx-2 my-2">
+      {post?.tags.map((tag) => <Tag tag={tag} />)}
+    </div>
+    
     <div class="post-details">
       <p set:html={post?.content?.html} />
     </div>

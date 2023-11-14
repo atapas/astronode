@@ -13,8 +13,12 @@ const pageTitle = "AstroNode";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header pageTitle={pageTitle}/>
-    <slot />
-    <Footer />
+    <div class="flex flex-col">
+      <Header pageTitle={pageTitle}/>
+      <div class="max-w-[80%] mt-0 mr-auto mb-0 ml-auto">
+        <slot />
+      </div>
+      <Footer />
+    </div>
   </body>
 </html>

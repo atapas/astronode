@@ -22,6 +22,10 @@ export const getAllPosts = async () => {
                 coverImage {
                   url
                 }
+                tags {
+                  name
+                  slug
+                }
                 publishedAt
               }
             }
