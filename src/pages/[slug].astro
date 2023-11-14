@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {getAllPosts, getPost} from '../data/blog-data';
 import Tag from '../components/Tag.astro';
+import Author from '../components/Author.astro';
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -18,19 +19,10 @@ const post = await getPost(slug);
     <img class="rounded-lg" src={post.coverImage?.url} alt={post.title} />
     <h1 class="text-4xl font-bold pt-5">{post?.title}</h1>
     <h2 class="text-xl pt-3 pb-3">{post.subtitle}</h2>
-    <div class="relative flex flex-row flex-wrap items-center justify-center">
-      <div class="mb-5 flex w-full flex-row items-center justify-center md:mb-0 md:w-auto md:justify-start">
-        <div>
-          <span>{post.author.name}</span>
-        </div>
-      </div>
-      <div class="mb-5 flex w-full flex-row items-center justify-center md:mb-0 md:w-auto md:justify-start">
-        <span>{post.publishedAt}</span>
-        <span class="mx-3 block font-bold text-slate-500">.</span>
-        <span>{post.readTimeInMinutes} min read</span>
-      </div>
-    </div>
-    <div class="flex flex-wrap justify-center items-center mx-2 my-2">
+
+    <Author post={post} />
+    
+    <div class="flex flex-wrap justify-center items-center mt-5 mb-5">
       {post?.tags.map((tag) => <Tag tag={tag} />)}
     </div>
     

@@ -6,14 +6,11 @@ import {getAllPosts} from '../../data/blog-data';
 export async function getStaticPaths() {
   const data = await getAllPosts();
   const allPosts = data.publication.posts.edges;
-  
-  console.log(allPosts);
 
   const allTags = [...new Set(allPosts.map((post) => post.node.tags).flat())];
   const jsonObject = allTags.map(JSON.stringify);
   const uniqueSet = new Set(jsonObject);
   const uniqueTags = Array.from(uniqueSet).map(JSON.parse);
-  //console.log(uniqueTags)
 
   return uniqueTags.map((tag: any) => {
     return {params: { tag: tag.slug }}
@@ -22,6 +19,6 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 
-console.log(tag);
+
 
 ---

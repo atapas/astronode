@@ -18,6 +18,7 @@ export const getAllPosts = async () => {
                 }
                 title
                 subtitle
+                brief
                 slug
                 coverImage {
                   url
@@ -27,6 +28,7 @@ export const getAllPosts = async () => {
                   slug
                 }
                 publishedAt
+                readTimeInMinutes
               }
             }
           }
