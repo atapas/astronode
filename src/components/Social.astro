@@ -1,9 +1,9 @@
 ---
-const { platform, username } = Astro.props;
+const { platform, username, displayName } = Astro.props;
 ---
 <a
   class="p-1 rounded-lg text-md mr-2 bg-purple-800 text-white"
   href={`https://www.${platform}.com/${username}`}
   target="_blank">
-  {platform}
+  {displayName}
 </a>
