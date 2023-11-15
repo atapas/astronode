@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Posts from '../../components/Posts.astro';
-import {getAllPosts} from '../../data/blog-data';
-import Tag from '../../components/Tag.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Posts from '../../../components/Posts.astro';
+import {getAllPosts} from '../../../data/blog-data';
+import Tag from '../../../components/Tag.astro';
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -42,7 +42,7 @@ const { posts, matchedTag } = Astro.props;
     <p class="text-lg pt-1 px-1 mr-1">{posts.length} post(s) matched the tag</p> 
     <Tag tag={matchedTag} />
     <span class="mx-3 mt-1 block font-bold text-slate-500 text-xl"> | </span>
-    <a class="mt-1.5" href="/">See all posts</a>
+    <a class="mt-1.5" href="/blog">See all posts</a>
   </div>
   <Posts allPosts={posts} />
 </BaseLayout>

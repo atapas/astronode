@@ -4,7 +4,7 @@ import Tag from './Tag.astro';
 
 const {post} = Astro.props;
 ---
-<a href={`/${post.slug}`}>
+<a href={`/blog/${post.slug}`}>
   <div class="p-6 bg-white rounded shadow-sm my-4">
     <h2 class="text-4xl pb-5 font-semibold">{post.title}</h2>
     <div class="flex lg:flex-row md:flex-col max-sm:flex-col ">

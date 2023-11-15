@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import {getAllPosts, getPost} from '../data/blog-data';
-import Tag from '../components/Tag.astro';
-import Author from '../components/Author.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {getAllPosts, getPost} from '../../data/blog-data';
+import Tag from '../../components/Tag.astro';
+import Author from '../../components/Author.astro';
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
