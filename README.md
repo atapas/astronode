@@ -1,16 +1,28 @@
-# Astro Starter Kit: Minimal
+# AstroNode Blog
+The `AstroNode Blog` is a project to build customized blogging platform using [Headless Hashnode](https://hashnode.com/headless) and [Astro web framework](https://astro.build/).
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## See Demo
+You can see the demo of the working app from here:
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+> [The AstroNode Blog Demo](https://astronodeblog.netlify.app/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Run It Locally
+You can fork the repository and run the application locally using the following steps:
+- Install dependencies using `npm install` / `pnpm install` / `yarn` command.
+- Start the development server with `npm run dev` / `pnpm dev` / `yarn dev`.
+- By default, the app will run on the [http://localhost:4321/](http://localhost:4321/).
 
-## 🚀 Project Structure
+## Tech Stack
+- Astro as front-end web framework.
+- Tailwind CSS for styling.
+- Headless Hashnode as the CMS for Blogging.
+- GraphQL client.
+- Netlify for hosting (with automatic build & deploy).
+
+## Support
+
+
+## Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
@@ -29,7 +41,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -42,6 +54,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Deployment Status
+The app is deployed on Netlify.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7e352168-2323-4cfd-8edb-035a9d41a563/deploy-status)](https://app.netlify.com/sites/astronodeblog/deploys)
