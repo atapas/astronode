@@ -1,5 +1,5 @@
 # AstroNode Blog
-The `AstroNode Blog` is a project to build a customized blogging platform using [Headless Hashnode](https://hashnode.com/headless) and [Astro web framework](https://astro.build/).
+The `AstroNode Blog` is a project to build a custom blog UI using [Headless Hashnode](https://hashnode.com/headless) and [Astro web framework](https://astro.build/).
 
 ## 🔥 See Demo
 You can see the demo of the working app from here:
